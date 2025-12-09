@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Tab Manager - Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #5a6fd8;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Smart Tab Manager - Test Page</h1>
+    
+    <div class="instructions">
+        <h3>📋 Testing Instructions</h3>
+        <p>Use this page to test your Smart Tab Manager extension. Follow the steps below to verify all features are working correctly.</p>
+    </div>
+
+    <div class="test-section">
+        <h3>1. Duplicate Tab Test</h3>
+        <p>Test the duplicate tab detection feature:</p>
+        <button class="test-button" onclick="openDuplicateTabs()">Open 3 Duplicate Tabs</button>
+        <button class="test-button" onclick="openDifferentTabs()">Open Different Tabs</button>
+        <p><strong>Expected Result:</strong> Duplicate tabs should be automatically closed, keeping only the most recent one.</p>
+    </div>
+
+    <div class="test-section">
+        <h3>2. Inactivity Test</h3>
+        <p>Test the inactive tab closing feature:</p>
+        <button class="test-button" onclick="openTestTabs()">Open Test Tabs</button>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Click "Open Test Tabs" to create several test tabs</li>
+            <li>Switch to another tab and wait for the configured timeout period</li>
+            <li>The test tabs should be automatically closed</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h3>3. Whitelist Test</h3>
+        <p>Test the whitelist functionality:</p>
+        <button class="test-button" onclick="openWhitelistTest()">Open Whitelist Test Tab</button>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Add this domain to your whitelist: <code>example.com</code></li>
+            <li>Open the test tab and leave it inactive</li>
+            <li>The tab should NOT be closed even after the timeout period</li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h3>4. Statistics Test</h3>
+        <p>Check if statistics are being tracked:</p>
+        <button class="test-button" onclick="checkStats()">Check Statistics</button>
+        <div id="statsDisplay" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; display: none;">
+            <p><strong>Statistics:</strong></p>
+            <p id="statsContent"></p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>5. Restore Test</h3>
+        <p>Test the tab restore functionality:</p>
+        <button class="test-button" onclick="openRestoreTest()">Open Tabs to Close</button>
+        <button class="test-button" onclick="restoreTabs()">Restore Last 5 Tabs</button>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Open some test tabs</li>
+            <li>Let them be closed by the extension</li>
+            <li>Use the restore function to bring them back</li>
+        </ol>
+    </div>
+
+    <div class="warning">
+        <h3>⚠️ Important Notes</h3>
+        <ul>
+            <li>Make sure the Smart Tab Manager extension is enabled</li>
+            <li>Check your settings for the correct inactivity timeout</li>
+            <li>Some tests may take a few minutes to complete</li>
+            <li>Pinned tabs will never be closed by the extension</li>
+        </ul>
+    </div>
+
+    <script>
+        function openDuplicateTabs() {
+            // Open the same page multiple times
+            for (let i = 0; i < 3; i++) {
+                window.open(window.location.href, '_blank');
+            }
+        }
+
+        function openDifferentTabs() {
+            // Open different pages
+            const urls = [
+                'https://www.google.com',
+                'https://www.github.com',
+                'https://www.stackoverflow.com'
+            ];
+            urls.forEach(url => {
+                window.open(url, '_blank');
+            });
+        }
+
+        function openTestTabs() {
+            // Open test tabs that will become inactive
+            for (let i = 0; i < 3; i++) {
+                window.open('data:text/html,<h1>Test Tab ' + (i + 1) + '</h1><p>This tab will become inactive</p>', '_blank');
+            }
+        }
+
+        function openWhitelistTest() {
+            // Open a tab that should be whitelisted
+            window.open('https://example.com', '_blank');
+        }
+
+        function checkStats() {
+            // This would need to communicate with the extension
+            // For now, just show a message
+            document.getElementById('statsDisplay').style.display = 'block';
+            document.getElementById('statsContent').innerHTML = 
+                'Check the Smart Tab Manager popup to see current statistics.<br>' +
+                'Look for "Tabs closed today" and "Current tabs" counts.';
+        }
+
+        function openRestoreTest() {
+            // Open tabs that can be closed and restored
+            for (let i = 0; i < 5; i++) {
+                window.open('data:text/html,<h1>Restore Test Tab ' + (i + 1) + '</h1>', '_blank');
+            }
+        }
+
+        function restoreTabs() {
+            // This would need to communicate with the extension
+            alert('Use the Smart Tab Manager popup to restore tabs. Click the "Restore Last 5" button.');
+        }
+
+        // Add some content to make the page more realistic
+        document.addEventListener('DOMContentLoaded', function() {
+            const content = document.createElement('div');
+            content.innerHTML = `
+                <h2>Welcome to the Test Page!</h2>
+                <p>This page is designed to help you test all the features of the Smart Tab Manager extension.</p>
+                <p>Make sure you have the extension installed and enabled before running these tests.</p>
+                <h3>Quick Setup Checklist:</h3>
+                <ul>
+                    <li>✅ Extension installed and enabled</li>
+                    <li>✅ Inactivity timeout configured (try 1-2 minutes for testing)</li>
+                    <li>✅ Notifications enabled (optional)</li>
+                    <li>✅ Whitelist configured (add example.com for testing)</li>
+                </ul>
+            `;
+            document.body.insertBefore(content, document.querySelector('.instructions'));
+        });
+    </script>
+</body>
+</html>
+
+
