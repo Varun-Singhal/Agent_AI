@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travel Agent Helper</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page popup">
+    <div class="container">
+      <h1>Travel Agent Helper</h1>
+      <p>Ask for hotels or flights in natural language.</p>
+
+      <div class="card" style="margin-bottom:10px;">
+        <textarea id="query" rows="4" placeholder="e.g., Find me a hotel in Bali for tomorrow"></textarea>
+        <div style="margin-top:8px; display:flex; gap:8px;">
+          <button id="run" class="primary">Find</button>
+          <button id="openOptions">Options</button>
+        </div>
+      </div>
+
+      <div id="result" class="result" style="min-height:64px;">
+        <div class="muted">Your result will appear here.</div>
+      </div>
+
+      <div class="footer">Powered by Gemini + SerpApi</div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+  </html>
+
+

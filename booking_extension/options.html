@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travel Agent Helper • Options</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page options">
+    <div class="container">
+      <h1>API Keys</h1>
+      <p>Store your API keys locally in Chrome storage.</p>
+      <form id="keys-form">
+        <label>
+          Gemini API Key
+          <input id="geminiKey" type="password" placeholder="AIza..." autocomplete="off" />
+        </label>
+        <label>
+          SerpApi Key
+          <input id="serpKey" type="password" placeholder="xxxxxxxx..." autocomplete="off" />
+        </label>
+        <button type="submit" class="primary">Save</button>
+        <span id="status" class="status"></span>
+      </form>
+    </div>
+    <script src="options.js"></script>
+  </body>
+  </html>
+
+

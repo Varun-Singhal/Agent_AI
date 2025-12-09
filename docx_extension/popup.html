@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interview Question Extractor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page popup">
+    <div class="container">
+      <div class="header">
+        <h1>📝 Interview Question Extractor</h1>
+        <p>Upload a Word document to extract the 5 most important interview questions</p>
+      </div>
+
+      <div class="card upload-card">
+        <div class="upload-area" id="uploadArea">
+          <div class="upload-icon">📄</div>
+          <div class="upload-text">
+            <strong>Drop your .docx file here</strong>
+            <span>or click to browse</span>
+          </div>
+          <input type="file" id="fileInput" accept=".docx" style="display: none;" />
+        </div>
+        
+        <div id="fileInfo" class="file-info" style="display: none;">
+          <div class="file-details">
+            <span class="file-icon">📄</span>
+            <div>
+              <div class="file-name" id="fileName"></div>
+              <div class="file-size" id="fileSize"></div>
+            </div>
+            <button id="removeFile" class="remove-btn">×</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card action-card">
+        <button id="extractBtn" class="primary" disabled>
+          <span class="btn-text">🔍 Extract Questions</span>
+          <span class="btn-loading" style="display: none;">⏳ Analyzing...</span>
+        </button>
+        <button id="settingsBtn" class="secondary">⚙️ Settings</button>
+      </div>
+
+      <div id="results" class="results" style="display: none;">
+        <h3>🎯 Top 5 Interview Questions:</h3>
+        <div id="questionsList" class="questions-list"></div>
+      </div>
+
+      <div id="error" class="error" style="display: none;"></div>
+    </div>
+    
+    <script src="popup.js"></script>
+  </body>
+</html>
+
+
+
+
