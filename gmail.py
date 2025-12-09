@@ -34,9 +34,9 @@ def send_email_with_attachment(
     """Send an email with a single attachment via Gmail SMTP."""
     sender, app_password = _load_credentials()
 
-    subject="Hello from Gmail SMTP"
-    body="Please find the requested file attached."
-    attachment_path="app.log"
+    subject = "Hello from Gmail SMTP"
+    body = "Please find the requested file attached."
+    attachment_path = "app.log"
 
     attachment = Path(attachment_path)
     if not attachment.exists():
