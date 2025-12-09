@@ -29,7 +29,7 @@ async def generate_with_timeout(prompt, timeout=10):
             loop.run_in_executor(
                 None,
                 lambda: client.models.generate_content(
-                    model="gemini-2.0-flash", contents=prompt
+                    model="gemini-2.5-flash", contents=prompt
                 ),
             ),
             timeout=timeout,
@@ -47,9 +47,9 @@ async def generate_with_timeout(prompt, timeout=10):
 async def main():
     logging.info("Starting main execution...")
     tool_list = []
-    user_query = """Open Paint and fill the canvas with black color and then send
-    the log file to my email id 'singhal.varun72@gmail.com'"""
-    max_iteration = 5
+    user_query = """Open Paint and fill the canvas with black color and make sure app.log file is sent to the email id 'singhal.varun72@gmail.com',
+    once the paint is filled in canvas"""
+    max_iteration = 4
     final_response = None
 
     try:

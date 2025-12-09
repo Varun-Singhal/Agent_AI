@@ -1,12 +1,19 @@
 import logging
+from pathlib import Path
 
+
+_LOG_FILE = Path("app.log")
+
+# Configure root logger once to write to file and echo to console.
 logging.basicConfig(
-    filename="app.log",  # Specify the log file name
-    level=logging.INFO,  # Set the logging level (e.g., INFO, DEBUG, WARNING, ERROR, CRITICAL)
-    format="%(asctime)s - %(levelname)s - %(message)s",  # Define the log message format
-    # filemode='w'          # 'a' for append (default), 'w' for write (overwrite)
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(_LOG_FILE, mode="w", encoding="utf-8"),
+        logging.StreamHandler(),
+    ],
 )
 
 
-def get_logger(name):
+def get_logger(name: str) -> logging.Logger:
     return logging.getLogger(name)
