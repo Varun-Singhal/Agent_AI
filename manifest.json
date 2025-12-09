@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Code Explainer with Gemini",
+  "version": "1.0.0",
+  "description": "Right-click selected code to get an explanation from Gemini and view it in a clean popup.",
+  "action": {
+    "default_title": "Code Explainer with Gemini",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "contextMenus",
+    "scripting",
+    "storage",
+    "activeTab",
+    "clipboardRead",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

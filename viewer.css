@@ -1,0 +1,14 @@
+/* Full page viewer styles */
+:root { --bg:#0f1115; --panel:#171a21; --text:#e6e6e6; --muted:#9aa4b2; }
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; height:100%; }
+body { background: var(--bg); color: var(--text); font: 14px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif; }
+.header { padding:14px 18px; background: var(--panel); border-bottom:1px solid #232733; position: sticky; top:0; }
+.title { font-weight:600; }
+main { padding: 16px 18px; }
+.meta { color: var(--muted); margin-bottom: 12px; display:flex; align-items:center; gap:8px; }
+.spinner { width:16px; height:16px; border:2px solid #34405a; border-top-color: #6aa6ff; border-radius:50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.rendered { margin:0; padding:16px; background:#0b0d12; border:1px solid #202637; border-radius:8px; }
+.rendered * { color: var(--text); }
+.rendered a { color: #6aa6ff; }
